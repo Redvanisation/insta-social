@@ -1,0 +1,7 @@
+<h2>Posts index</h2>
+
+<% @posts.each do |post| %>
+    <p><%= post.content %></p>
+    <p><%= post.user.email %></p>
+    <hr>
+<% end %>
