@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
-  post 'users', to: 'users#create'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :posts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
