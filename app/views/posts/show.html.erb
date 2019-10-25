@@ -4,6 +4,8 @@
 <p><%= @post.content %></p>
 <h5><%= @post.user.username %></h5>
 <hr>
+<p> <%= @post.likes.count %> Likes </p>
+
 <% if @post.comments.any? %>
     <% @post.comments.each do |comment| %>
         <h5><%= comment.body %></h5>
@@ -18,6 +20,16 @@
 
     <%= f.hidden_field( :post_id, value: @post.id) %>
     <%= f.hidden_field( :user_id, value: @post.user.id) %>
-    
+
     <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>
+
+
+<%= form_for(:like, url: likes_path(@like), html: { method: :post }) do |f| %>
+<%= f.hidden_field( :post_id, value: @post.id) %>
+<%= f.hidden_field( :user_id, value: @post.user.id) %>
+<% @post.likes do |like|  %>
+  <%= f.submit "Like" %>
+  <% end %>
+
+  <% end %>
