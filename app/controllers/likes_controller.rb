@@ -11,8 +11,10 @@ end
 
 def destroy
   @like = Like.find_by(user_id: params[:id])
+  @p = @like.post
+  # debugger
   @like.destroy
-  redirect_to post_path(@like.post_id)
+  redirect_to post_path(@p.id)
 end
 private
 

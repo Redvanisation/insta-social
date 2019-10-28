@@ -11,6 +11,9 @@ feature 'Like creation' do
     expect {
       click_button 'Like'
     }.to change(Like, :count).by(1)
+
+
+
   end
 
 
@@ -18,6 +21,7 @@ feature 'Like creation' do
   login user
         post.save
     visit post_path(post.id)
+    click_button 'Like'
     expect {
       click_button 'Unlike'
     }.to change(Like, :count).by(-1)
