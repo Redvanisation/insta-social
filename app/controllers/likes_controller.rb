@@ -1,18 +1,25 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
-def create
-  @like = Like.new(like_params)
-  @like.save
-  redirect_to post_path(@like.post_id)
+  def create
+    @like = Like.new(like_params)
+    @like.save
+    redirect_to post_path(@like.post_id)
 
-  if !@like.save
-    flash.now[:danger] = "You already liked this post"
-end
-end
+    flash.now[:danger] = 'You already liked this post' unless @like.save
+  end
 
-private
+  def destroy
+    @like = Like.find_by(user_id: params[:id])
+    @p = @like.post
+    # debugger
+    @like.destroy
+    redirect_to post_path(@p.id)
+  end
 
-def like_params
-   params.require(:like).permit(:post_id, :user_id)
-end
+  private
 
+  def like_params
+    params.require(:like).permit(:post_id, :user_id)
+  end
 end

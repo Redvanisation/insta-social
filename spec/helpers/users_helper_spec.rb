@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 def login(user)
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+  visit new_user_session_path
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_button 'Log in'
 end
 # Specs in this file have access to a helper object that includes
 # the UsersHelper. For example:

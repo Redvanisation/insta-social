@@ -1,27 +1,27 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../helpers/users_helper_spec'
 feature 'Like creation' do
-  let(:user) {create(:user)}
-  let(:post) {user.posts.build(content: "Yet another post")}
+  let(:user) { create(:user) }
+  let(:post) { user.posts.build(content: 'Yet another post') }
 
   scenario 'Log in and like a post' do
-  login user
-        post.save
+    login user
+    post.save
     visit post_path(post.id)
-    expect {
+    expect do
       click_button 'Like'
-    }.to change(Like, :count).by(1)
+    end.to change(Like, :count).by(1)
   end
-
 
   scenario 'Log in and unlike a post' do
-  login user
-        post.save
+    login user
+    post.save
     visit post_path(post.id)
-    expect {
+    click_button 'Like'
+    expect do
       click_button 'Unlike'
-    }.to change(Like, :count).by(-1)
+    end.to change(Like, :count).by(-1)
   end
-
-
 end

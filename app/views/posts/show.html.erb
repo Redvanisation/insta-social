@@ -19,17 +19,24 @@
     <%= f.text_area :body, class: 'form-control' %>
 
     <%= f.hidden_field( :post_id, value: @post.id) %>
-    <%= f.hidden_field( :user_id, value: @post.user.id) %>
+    <%= f.hidden_field( :user_id, value: current_user.id) %>
 
     <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>
 
 
-<%= form_for(:like, url: likes_path(@like), html: { method: :post }) do |f| %>
-<%= f.hidden_field( :post_id, value: @post.id) %>
-<%= f.hidden_field( :user_id, value: @post.user.id) %>
-<% @post.likes do |like|  %>
-  <%= f.submit "Like" %>
-  <% end %>
 
-  <% end %>
+<%= form_for(:like, url: like_path(current_user.id), html: { method: :delete }) do |f| %>
+<% if @post.likes.any? {|el| current_user.id == el.user_id} %>
+  <%= f.submit "Unlike" %>
+  <%end%>
+<% end %>
+
+
+  <%= form_for(:like, url: likes_path(current_user.id), html: { method: :post }) do |f| %>
+  <%= f.hidden_field( :post_id, value: @post.id) %>
+  <%= f.hidden_field( :user_id, value: current_user.id) %>
+  <% if !@post.likes.any? {|el| current_user.id == el.user_id} %>
+    <%= f.submit "Like" %>
+    <%end%>
+<%end %>
