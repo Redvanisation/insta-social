@@ -9,6 +9,11 @@ def create
 end
 end
 
+def destroy
+  @like = Like.find_by(user_id: params[:id])
+  @like.destroy
+  redirect_to post_path(@like.post_id)
+end
 private
 
 def like_params
