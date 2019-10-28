@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 def create_post(post)
-    visit new_post_path
-    fill_in 'Content', with: post.content
-    click_button 'Publish'
+  visit new_post_path
+  fill_in 'Content', with: post.content
+  click_button 'Publish'
 end
 
 # Specs in this file have access to a helper object that includes
