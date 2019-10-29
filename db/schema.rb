@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2019_10_29_100540) do
     t.integer "post_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id"
+  create_table "friendships", primary_key: ["user_id", "friend_id"], force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
     t.boolean "confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
