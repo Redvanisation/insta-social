@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../helpers/users_helper_spec'
 feature 'Comment creation' do
