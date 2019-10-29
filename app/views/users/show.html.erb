@@ -1,5 +1,16 @@
 <h1> Hello from user  </h1>
 
 
-<h2> Pending requests </h2>
-<%= @user.pending_requests %>
+<% if current_user == @user %>
+    <h2> Pending requests </h2>
+    <% @user.pending_friends.each do |pending_friend| %>
+        <!-- User's avatar goes here -->
+        <%= link_to "#{pending_friend.username}", user_path(pending_friend.id) %>
+        
+          <%= form_for(:friendships, url: friendship_path(current_user.id, pending_friend.id), html: { method: :put }) do |f| %>
+            <%= f.hidden_field( :user_id, value: current_user.id) %>
+            <%= f.hidden_field( :friend_id, value: pending_friend.id) %>
+            <%= f.submit "Accept" %>
+          <% end %>
+    <% end %>
+<% end %>

@@ -5,11 +5,13 @@
       Name: <%= user.username %><br>
       Email: <%= user.email %>
 
-    <%= form_for(:friendship, url: friendships_path, html: { method: :post }) do |f| %>
-      <%= f.hidden_field( :user_id, value: current_user.id) %>
-      <%= f.hidden_field( :friend_id, value: user.id) %>
-      <%= f.submit "Add as a friend" %>
-    <%end %>
+    <% if signed_in? %>
+      <%= form_for(:friendship, url: friendships_path, html: { method: :post }) do |f| %>
+        <%= f.hidden_field( :user_id, value: current_user.id) %>
+        <%= f.hidden_field( :friend_id, value: user.id) %>
+        <%= f.submit "Add as a friend" %>
+      <%end %>
+    <% end %>
     </div>
 <% end %>
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RegistrationsController < Devise::RegistrationsController
-  include UsersHelper
 
   def create
     super do
