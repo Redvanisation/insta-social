@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'comment created successfully'
-      redirect_to post_path(@comment.post_id)
     else
       flash[:danger] = 'Failed to comment'
     end
+    redirect_to post_path(@comment.post_id)
   end
 
   private
