@@ -30,8 +30,8 @@ development:
    encoding: unicode
    database: insta-social_development
    pool: 5
-   username: redvanisation
-   password:
+   username: mouahamdou
+   password: 'password'
 
 # development:
 #
@@ -74,7 +74,7 @@ test:
   encoding: unicode
   database: insta-social_test
   pool: 5
-  username: redvanisation
+  username: mouahamdou
   password: 'password'
 
 # As with config/secrets.yml, you never want to store sensitive information,
