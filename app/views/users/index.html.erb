@@ -12,7 +12,7 @@
         <%= form_for(:friendships, url: friendships_path, html: { method: :post }) do |f| %>
           <%= f.hidden_field( :user_id, value: current_user.id) %>
           <%= f.hidden_field( :friend_id, value: user.id) %>
-          <%= f.submit "Add as a friend" %>
+          <%= f.submit "Add as a friend", class: "btn btn-primary" %>
         <%end %>
       <% end %>
 

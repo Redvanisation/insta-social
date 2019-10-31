@@ -11,14 +11,14 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def gravatar_for( options = { size: 80 })
+  def gravatar_for(options = { size: 80 })
     size = options[:size]
-    gravatar_url = "https://secure.gravatar.com/avatar/#{self.avatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: self.name, class: 'gravatar')
+    gravatar_url = "https://secure.gravatar.com/avatar/#{avatar_id}?s=#{size}"
+    image_tag(gravatar_url, alt: name, class: 'gravatar')
   end
 
   def make_gravatar_id
-    Digest::MD5.hexdigest(self.email.downcase)
+    Digest::MD5.hexdigest(email.downcase)
   end
 
   def friends
@@ -47,6 +47,6 @@ class User < ApplicationRecord
   end
 
   def notifications_count
-    self.received_requests.count if self.received_requests.any?
+    received_requests.count if received_requests.any?
   end
 end
