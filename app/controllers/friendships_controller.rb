@@ -15,12 +15,9 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find_by(user_id: friendship_params[:user_id], friend_id: friendship_params[:friend_id])
-    debugger
-    @friendship.confirmed = true 
-    @friendship.save
-    @inverse_friendship = Friendship.new(friend_id: friendship_params[:user_id], user_id: friendship_params[:friend_id])
-    @inverse_friendship.confirmed = true
-    @inverse_friendship.save
+    @friendship.update_attribute(:confirmed, true)
+    
+    Friendship.create!(user_id: friendship_params[:friend_id], friend_id: friendship_params[:user_id], confirmed: true)
     
     redirect_to user_path(current_user)
   end

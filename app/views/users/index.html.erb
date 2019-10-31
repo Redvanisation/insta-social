@@ -5,7 +5,7 @@
       Name: <%= user.username %><br>
       Email: <%= user.email %>
 
-      <% if !current_user.friend?(user) && current_user != user %>
+      <% if (!current_user.friend?(user) && !current_user.received_requests.include?(user) && !current_user.sent_requests.include?(user)) && current_user != user %>
 
         <%= form_for(:friendships, url: friendships_path, html: { method: :post }) do |f| %>
           <%= f.hidden_field( :user_id, value: current_user.id) %>

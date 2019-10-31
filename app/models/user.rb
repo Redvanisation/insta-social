@@ -12,19 +12,13 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def gravatar_for(options = { size: 80 })
-    size = options[:size]
-    gravatar_url = "https://secure.gravatar.com/avatar/#{avatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: name, class: 'gravatar')
-  end
-
   def make_gravatar_id
     Digest::MD5.hexdigest(email.downcase)
   end
 
   def friends
-    inverse_array = friendships.map { |friendship| friendship.friend if friendship.confirmed } + inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    inverse_array.compact
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array.compact
   end
 
   # Users who have yet to confirme friend requests

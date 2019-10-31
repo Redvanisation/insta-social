@@ -27,4 +27,17 @@ feature 'Friendship creation' do
     click_button 'Accept'
     expect(Friendship.last.confirmed).to be(true)
   end
+
+  scenario "Checks if two inversed rows gets created in the db" do
+    login user
+    click_on 'Logout'
+    login user2
+    click_on 'Add as a friend'
+    click_on 'Logout'
+    login user
+    visit user_path(user)
+    click_button 'Accept'
+    expect(user.friends).to include(user2)
+    expect(user2.friends).to include(user)
+  end
 end
