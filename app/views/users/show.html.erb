@@ -9,8 +9,8 @@
                 <%= link_to "#{received_request.username}", user_path(received_request.id) %>
                 
                 <%= form_for(:friendships, url: friendship_path(current_user.id, received_request.id), html: { method: :put }) do |f| %>
-                    <%= f.hidden_field( :user_id, value: current_user.id) %>
-                    <%= f.hidden_field( :friend_id, value: received_request.id) %>
+                    <%= f.hidden_field( :user_id, value: received_request.id) %>
+                    <%= f.hidden_field( :friend_id, value: current_user.id) %>
                     <%= f.submit "Accept" %>
                 <% end %>
             <% end %>
