@@ -18,7 +18,7 @@ class FriendshipsController < ApplicationController
         @friendship = Friendship.find_by(user_id: friendship_params[:user_id], friend_id: friendship_params[:friend_id])
         
          @friendship.update_attribute(:confirmed, true)
-        debugger 
+        # debugger 
         
         redirect_to user_path(current_user)
 

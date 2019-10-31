@@ -8,7 +8,9 @@ RSpec.describe Friendship, type: :model do
   let(:friend2) { create(:user) }
   let(:friendship) { Friendship.new }
   let(:friendship2) { Friendship.new }
+  
   context 'Presence and validation' do
+    
     it "Checks if friendship model's presence" do
       friendship.save
       expect(friendship).not_to be_valid
@@ -17,8 +19,8 @@ RSpec.describe Friendship, type: :model do
     it 'Checks if friendship model is valid' do
       friendship.user_id = user.id
       friendship.friend_id = friend.id
-      friendship.confirmed = true
-      friendship.save
+      # friendship.confirmed = true
+      # friendship.save
       expect(friendship).to be_valid
     end
   end

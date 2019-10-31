@@ -6,7 +6,7 @@
             <h2> Pending requests </h2>
                 <!-- User's avatar goes here -->
             <% @user.received_requests.each do |received_request| %>
-                <%= link_to "#{received_request.username}", user_path(received_request.id) %>
+                <%= link_to "#{received_request.username.capitalize}", user_path(received_request.id) %>
                 
                 <%= form_for(:friendships, url: friendship_path(current_user.id, received_request.id), html: { method: :put }) do |f| %>
                     <%= f.hidden_field( :user_id, value: received_request.id) %>
@@ -17,11 +17,17 @@
         </div>
 
         <div class="col-md-4">
-            <h2>Hello</h2>
+            <h2>Sent requests</h2>
+            <% @user.sent_requests.each do |pending| %>
+                <p><%= link_to "#{pending.username.capitalize}", user_path(pending.id) %></p>
+            <% end %>
         </div>
         <div class="col-md-4">
-            <h2>Hello</h2>
-
+            <h2>Friends</h2>
+            <% @user.friends.each do |friend| %>
+              <p><%=  link_to "#{friend.username.capitalize}", user_path(friend.id) %></p>
+              
+            <% end %>
         </div>
 
     </div>
