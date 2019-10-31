@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
             flash[:success] = "Request sent"
         else 
             redirect_to root_path
-            flash[:error] = "Something went wrong in sending the friend request"
+            flash[:error] = "Friend request has not been sent"
         end
     end 
 

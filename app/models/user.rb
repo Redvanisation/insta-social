@@ -11,14 +11,14 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def gravatar_for(user, options = { size: 80 })
+  def gravatar_for( options = { size: 80 })
     size = options[:size]
-    gravatar_url = "https://secure.gravatar.com/avatar/#{user.avatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: user.name, class: 'gravatar')
+    gravatar_url = "https://secure.gravatar.com/avatar/#{self.avatar_id}?s=#{size}"
+    image_tag(gravatar_url, alt: self.name, class: 'gravatar')
   end
 
-  def make_gravatar_id(user)
-    Digest::MD5.hexdigest(user.email.downcase)
+  def make_gravatar_id
+    Digest::MD5.hexdigest(self.email.downcase)
   end
 
   def friends
@@ -29,22 +29,26 @@ class User < ApplicationRecord
   end
 
   # Users who have yet to confirme friend requests
-  def pending_friends
+  def sent_requests
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   # Users who have requested to be friends
-  def friend_requests
+  def received_requests
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |friendshp| friendshp.user == user }
+  def confirm_friend
+    friendship = inverse_friendships.find { |friendshp| friendshp.user == self }
     friendship.confirmed = true
     friendship.save
   end
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def notifications_count
+    self.received_requests.count if self.received_requests.any?
   end
 end
