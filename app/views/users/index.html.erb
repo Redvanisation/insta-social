@@ -1,11 +1,25 @@
 <h2>Users list</h2>
 
 <% @users.each do |user| %>
+<%# if user != current_user %>
     <div>
       Name: <%= user.username %><br>
       Email: <%= user.email %>
+
+      <% if !current_user.friend?(user) && current_user != user %>
+            <%#if current_user == user %>
+
+        <%= form_for(:friendships, url: friendships_path, html: { method: :post }) do |f| %>
+          <%= f.hidden_field( :user_id, value: current_user.id) %>
+          <%= f.hidden_field( :friend_id, value: user.id) %>
+          <%= f.submit "Add as a friend", class: "btn btn-primary" %>
+        <%end %>
+      <% end %>
+
     </div>
-<% end %>
+    <hr>
+    <% end %>
+
+<%# end %>
 
 
-<hr>

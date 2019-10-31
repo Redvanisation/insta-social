@@ -1,6 +1,5 @@
 <h2>Post show page</h2>
 
-<p> <%=@post.id%> </p>
 <p><%= @post.content %></p>
 <h5><%= @post.user.username %></h5>
 <hr>
@@ -28,7 +27,7 @@
 
 <%= form_for(:like, url: like_path(current_user.id), html: { method: :delete }) do |f| %>
 <% if @post.likes.any? {|el| current_user.id == el.user_id} %>
-  <%= f.submit "Unlike" %>
+  <%= f.submit "Unlike", class: "btn btn-primary" %>
   <%end%>
 <% end %>
 
@@ -37,6 +36,6 @@
   <%= f.hidden_field( :post_id, value: @post.id) %>
   <%= f.hidden_field( :user_id, value: current_user.id) %>
   <% if !@post.likes.any? {|el| current_user.id == el.user_id} %>
-    <%= f.submit "Like" %>
+    <%= f.submit "Like", class: "btn btn-primary" %>
     <%end%>
 <%end %>
