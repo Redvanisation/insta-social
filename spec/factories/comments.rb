@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :post do
+  factory :comment do
+    body { 'MyText' }
+    # user_id { 1 }
     # post_id { 1 }
-    content { 'Hello, this is a factory content' }
-    user_id { 1 }
     # user { nil }
   end
 end
