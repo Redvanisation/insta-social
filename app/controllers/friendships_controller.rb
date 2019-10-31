@@ -1,40 +1,30 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
-    
-    def create
-        @friendship1 = Friendship.new(friendship_params)
-        @friendship1.confirmed = false
+  def create
+    @friendship = Friendship.new(friendship_params)
+    @friendship.confirmed = false
 
-        @friendship2 = Friendship.new(user_id: friendship_params[:friend_id], friend_id: friendship_params[:user_id])
-        @friendship2.confirmed = false
-
-        if @friendship1.save && @friendship2.save
-
-            redirect_to root_path 
-            flash[:success] = "Request sent"
-        else 
-            render 'new'
-            flash[:error] = "Something went wrong in sending the friend request"
-
-        end
-    end 
-
-    
-    def update
-        @friendship1 = Friendship.find_by(user_id: friendship_params[:user_id], friend_id: friendship_params[:friend_id])
-        debugger
-        @friendship1.update_attribute(confirmed: true)
-        @friendship2 = Friendship.find_by(user_id: friendship_params[:friend_id], friend_id: friendship_params[:user_id])
-        @friendship2.update_attribute(confirmed: true)
-
+    if @friendship.save
+      flash[:success] = 'Request sent'
+    else
+      flash[:error] = 'Friend request has not been sent'
     end
+    redirect_to root_path
+  end
+
+  def update
+    @friendship = Friendship.find_by(user_id: friendship_params[:user_id], friend_id: friendship_params[:friend_id])
+    @friendship.update_attribute(:confirmed, true)
     
-    def destroy
+    redirect_to user_path(current_user)
+  end
 
-    end
+  def destroy; end
 
-    private
+  private
 
-    def friendship_params
-        params.require(:friendships).permit(:user_id, :friend_id)
-    end 
+  def friendship_params
+    params.require(:friendships).permit(:user_id, :friend_id)
+  end
 end

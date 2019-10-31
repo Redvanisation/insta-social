@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
-  root 'users#index'
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :users , only: [:show]
 
   resources :posts
   resources :comments
   resources :likes, only: [:create, :destroy]
-  resources :friendships, only: [:create, :destroy, :update]
+  resources :friendships
+  resources :users , only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  authenticated :user do
+
+    root 'users#index'
+  
+  end
+
+
+  devise_scope :user do
+
+    root to: 'devise/sessions#new'
+  
+  end
 end
