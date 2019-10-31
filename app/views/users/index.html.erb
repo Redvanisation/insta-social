@@ -1,10 +1,10 @@
 <h2>Users list</h2>
 
 <% @users.each do |user| %>
+<%if user != current_user %>
     <div>
       Name: <%= user.username %><br>
       Email: <%= user.email %>
-
     <% if signed_in? %>
       <% unless current_user.friend? user %>
         <%= form_for(:friendship, url: friendships_path, html: { method: :post }) do |f| %>
@@ -14,7 +14,10 @@
         <%end %>
       <% end %>
     <% end %>
+
     </div>
+    <% end %>
+
 <% end %>
 
 

@@ -22,7 +22,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: redvanisation
+  username: mouahamdou
   password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
 
 development:
@@ -30,8 +30,8 @@ development:
    encoding: unicode
    database: insta-social_development
    pool: 5
-   username: redvanisation
-   password:
+   username: mouahamdou
+   password: 'password'
 
 # development:
 #
@@ -74,8 +74,8 @@ test:
   encoding: unicode
   database: insta-social_test
   pool: 5
-  username: redvanisation
-  password:
+  username: mouahamdou
+  password: 'password'
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -99,5 +99,5 @@ test:
 production:
   <<: *default
   database: insta-social_production
-  username: redvanisation
+  username: mouahamdou
   password: <%= ENV['INSTA-SOCIAL_DATABASE_PASSWORD'] %>
