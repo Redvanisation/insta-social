@@ -16,35 +16,31 @@
 
   <%= form_for(:comment, url: comments_path(@comment), html: { method: :post }) do |f| %>
 
-      <%= f.label :comment %>
+      <%= f.label :body, 'Comment' %>
       <%= f.text_area :body, class: 'form-control' %>
 
       <%= f.hidden_field( :post_id, value: @post.id) %>
       <%= f.hidden_field( :user_id, value: current_user.id) %>
 
-<div class="row">
-  <span class="col-md-12 mt2">
-    <div class="inline-block">
-        <%= f.submit "Comment", class: "btn btn-primary inline" %>
-    <% end %>
-    </div>
-
-
-    <div class="inline-block">
-    <%= form_for(:like, url: like_path(current_user.id), html: { method: :delete }) do |f| %>
-    <% if @post.likes.any? {|el| current_user.id == el.user_id} %>
-      <%= f.submit "Unlike", class: "btn btn-primary inline" %>
-      <%end%>
+        <%= f.submit "Comment", class: "btn btn-primary f-left mr2 mt2" %>
     <% end %>
 
 
-    <%= form_for(:like, url: likes_path(current_user.id), html: { method: :post }) do |f| %>
-    <%= f.hidden_field( :post_id, value: @post.id) %>
-    <%= f.hidden_field( :user_id, value: current_user.id) %>
-    <% if !@post.likes.any? {|el| current_user.id == el.user_id} %>
-      <%= f.submit "Like", class: "btn btn-primary inline" %>
-      <%end%>
-    <%end %>
+
+    <div class="f-left mt2">
+      <%= form_for(:like, url: like_path(current_user.id), html: { method: :delete }) do |f| %>
+      <% if @post.likes.any? {|el| current_user.id == el.user_id} %>
+        <%= f.submit "Unlike", class: "btn btn-primary inline" %>
+        <%end%>
+      <% end %>
+
+
+      <%= form_for(:like, url: likes_path(current_user.id), html: { method: :post }) do |f| %>
+      <%= f.hidden_field( :post_id, value: @post.id) %>
+      <%= f.hidden_field( :user_id, value: current_user.id) %>
+      <% if !@post.likes.any? {|el| current_user.id == el.user_id} %>
+        <%= f.submit "Like", class: "btn btn-primary inline" %>
+        <%end%>
+      <%end %>
     </div>
-  </span>
-</div>
+

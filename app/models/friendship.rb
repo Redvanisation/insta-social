@@ -3,7 +3,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-  #validate :users_are_not_already_friends
+  # validate :users_are_not_already_friends
 
   # validates :confirmed, presence: true
 

@@ -11,7 +11,7 @@ feature 'Comment creation' do
     login user
     post.save
     visit post_path(post.id)
-    fill_in 'Body', with: comment.body
+    fill_in 'Comment', with: comment.body
 
     expect do
       click_button 'Comment'
