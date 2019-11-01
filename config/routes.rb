@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations", omniauth_callbacks: 'users/omniauth_callbacks'}
 
   resources :posts
   resources :comments
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   devise_scope :user do
 
     root to: 'devise/sessions#new'
+
+    delete 'sign_out', :to => 'devise/sessions#destroy'
   
   end
 end
