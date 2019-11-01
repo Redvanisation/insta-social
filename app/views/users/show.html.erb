@@ -1,4 +1,4 @@
-<h1> <%= gravatar_for(@user) %><%=  @user.username.capitalize %>'s profile </h1>
+<h1 class="mb2"> <%= gravatar_for(@user) %><%=  @user.username.capitalize %>'s profile </h1>
 
 <% if current_user == @user %>
     <div class="row">
@@ -46,6 +46,16 @@
             <% end %>
         </div>
 
+    </div>
+
+    <!-- User's articles -->
+    <div class="row">
+        <h2 class="mb2"><%=  @user.username.capitalize %>'s posts</h2>
+        <% @user.posts.each do |post| %>
+            <p class="article-content"><%= post.content %></p>
+            <%= link_to "Read more", post_path(post) %>
+            <hr>
+        <% end %>
     </div>
 
 <% end %>

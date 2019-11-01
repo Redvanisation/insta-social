@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = 'Post created'
-      redirect_to root_url
+      redirect_to post_path(@post)
     else
       flash[:danger] = 'Post not created'
       render 'new'

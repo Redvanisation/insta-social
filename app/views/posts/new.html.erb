@@ -1,9 +1,9 @@
-<h1>Publish a new post</h1>
+<h1 class="mb2">Publish a new post</h1>
 
 <%= form_for(:post, url: posts_path(@post), html: { method: :post }) do |f| %>
 
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control' %>
     
-    <%= f.submit "Publish", class: "btn btn-primary" %>
+    <%= f.submit "Publish", class: "btn btn-primary mt2" %>
 <% end %>
