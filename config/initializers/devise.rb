@@ -298,5 +298,4 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.omniauth :facebook, "2657062387693960", "3f20e8f71cad9397a605522abd4cc477"
-
 end
