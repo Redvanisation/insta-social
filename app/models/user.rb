@@ -1,29 +1,26 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include UsersHelper
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
   has_many :posts
   has_many :comments
   has_many :likes
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def gravatar_for(options = { size: 80 })
-    size = options[:size]
-    gravatar_url = "https://secure.gravatar.com/avatar/#{avatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: name, class: 'gravatar')
-  end
-
   def make_gravatar_id
     Digest::MD5.hexdigest(email.downcase)
   end
 
   def friends
-    inverse_array = friendships.map { |friendship| friendship.friend if friendship.confirmed } + inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    inverse_array.compact
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array.compact
   end
 
   # Users who have yet to confirme friend requests
@@ -48,5 +45,24 @@ class User < ApplicationRecord
 
   def notifications_count
     received_requests.count if received_requests.any?
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.username = auth.info.name # assuming the user model has a name
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data == session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+        user.email = data['email'] if user.email.blank?
+      end
+    end
   end
 end
