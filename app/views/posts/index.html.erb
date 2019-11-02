@@ -1,14 +1,5 @@
 <div class="row">
-    <!--<div class="col-md-4">
-        <h2 class="mb2">All posts</h2>
 
-        <% @posts.each do |post| %>
-            <p class="article-content"><%= post.content %></p>
-            <p><%= link_to "Read more", post_path(post) %></p>
-            <p>Author: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
-            <hr>
-        <% end %>
-    </div>-->
     <div class="col-md-6">
         <h2><%= current_user.username.capitalize %>'s posts</h2>
         <% @posts.each do |post| %>
