@@ -2,7 +2,7 @@
 
 ## Live Link
 
-url(https://radiant-depths-62730.herokuapp.com/)
+[Insta Social on Heroku](https://radiant-depths-62730.herokuapp.com/)
 
 ## Technologies
 
@@ -32,7 +32,7 @@ $ rails s
 
 ## Functionalities
 
-Project's requirements: url(https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project"> The odin final rails project)
+Project's requirements: [The odin final rails project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
 
 The user can:
@@ -41,11 +41,11 @@ The user can:
 
 ## Developed by
 
-[Radouane Khiri] url(https://github.com/Redvanisation") and [Mouhamadou Diouf] url(https://github.com/MouhaDiouf")
+[Radouane Khiri](https://github.com/Redvanisation") and [Mouhamadou Diouf](https://github.com/MouhaDiouf")
 
 ## Contributing
 
-1. Fork it (https://github.com/redvanisation/insta-social/fork)
+1. Fork it https://github.com/redvanisation/insta-social/fork
 2. Create your feature branch (git checkout -b feature/[choose-a-name])
 3. Commit your changes (git commit -am 'What this commit will fix/add')
 4. Push to the branch (git push origin feature/[chosen name])
