@@ -1,0 +1,46 @@
+<h2 class="mb2">Post's show page</h2>
+
+<p class="article-content"><%= @post.content %></p>
+<h5 class="authors">Author: <%= link_to "#{@post.user.username.capitalize}", user_path(@post.user) %></h5>
+<hr>
+<p> <%= @post.likes.count %> <%= @post.likes.count == 0 || @post.likes.count > 1 ? 'Likes' : 'Like' %></p>
+
+<hr>
+<h4>Comments:</h4>
+<% if @post.comments.any? %>
+    <% @post.comments.each do |comment| %>
+        <p><%= comment.body %></p>
+        <p class="authors">By: <%= link_to "#{comment.user.username.capitalize}", user_path(comment.user) %></p>
+    <% end %>
+<% end %>
+
+  <%= form_for(:comment, url: comments_path(@comment), html: { method: :post }) do |f| %>
+
+      <%= f.label :body, 'Comment' %>
+      <%= f.text_area :body, class: 'form-control' %>
+
+      <%= f.hidden_field( :post_id, value: @post.id) %>
+      <%= f.hidden_field( :user_id, value: current_user.id) %>
+
+        <%= f.submit "Comment", class: "btn btn-primary f-left mr2 mt2" %>
+    <% end %>
+
+
+
+    <div class="f-left mt2">
+      <%= form_for(:like, url: like_path(current_user.id), html: { method: :delete }) do |f| %>
+      <% if @post.likes.any? {|el| current_user.id == el.user_id} %>
+        <%= f.submit "Unlike", class: "btn btn-primary inline" %>
+        <%end%>
+      <% end %>
+
+
+      <%= form_for(:like, url: likes_path(current_user.id), html: { method: :post }) do |f| %>
+      <%= f.hidden_field( :post_id, value: @post.id) %>
+      <%= f.hidden_field( :user_id, value: current_user.id) %>
+      <% if !@post.likes.any? {|el| current_user.id == el.user_id} %>
+        <%= f.submit "Like", class: "btn btn-primary inline" %>
+        <%end%>
+      <%end %>
+    </div>
+

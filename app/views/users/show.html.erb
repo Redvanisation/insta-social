@@ -1,0 +1,61 @@
+<h1 class="mb2"> <%= gravatar_for(@user) %><%=  @user.username.capitalize %>'s profile </h1>
+
+<% if current_user == @user %>
+    <div class="row">
+        <div class="col-md-4">
+            <h2> Pending requests </h2>
+                
+            <% @user.received_requests.each do |received_request| %>
+                <div class="row">
+                    <span class="col-md-6 text-center">
+                        <%= gravatar_for(received_request, options = { size: 40 }) %>
+                        <%= link_to "#{received_request.username.capitalize}", user_path(received_request.id) %>
+                    </span>
+                    
+                    <span class="col-md-2 text-center mt">
+                        <%= form_for(:friendships, url: friendship_path(current_user.id, received_request.id), html: { method: :put }) do |f| %>
+                            <%= f.hidden_field( :user_id, value: received_request.id) %>
+                            <%= f.hidden_field( :friend_id, value: current_user.id) %>
+                            <%= f.submit "Accept", class: "btn btn-primary btn-sm" %>
+                        <% end %>
+                    </span>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Sent requests</h2>
+            <% @user.sent_requests.each do |pending| %>
+                <div class="row">
+                    <span class="col-md-8 text-center">
+                        <%= gravatar_for(pending, options = { size: 40 }) %>
+                        <%= link_to "#{pending.username.capitalize}", user_path(pending.id) %>
+                    </span>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-4">
+            <h2>Friends</h2>
+            <% @user.friends.each do |friend| %>
+                <div class="row">
+                    <div class="col-md-8 mt">
+                        <%= gravatar_for(friend, options = { size: 40 }) %>
+                        <%=  link_to "#{friend.username.capitalize}", user_path(friend.id) %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
+
+    <!-- User's articles -->
+    <div class="row">
+        <h2 class="mb2"><%=  @user.username.capitalize %>'s posts</h2>
+        <% @user.posts.each do |post| %>
+            <p class="article-content"><%= post.content %></p>
+            <%= link_to "Read more", post_path(post) %>
+            <hr>
+        <% end %>
+    </div>
+
+<% end %>
