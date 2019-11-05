@@ -2,7 +2,7 @@
 
 ## Live Link
 
-[Insta Social on Heroku](https://radiant-depths-62730.herokuapp.com/)
+[Insta Social on Heroku](https://theinsta-social.herokuapp.com/)
 
 ## Technologies
 
@@ -45,7 +45,7 @@ The user can:
 
 ## Contributing
 
-1. Fork it https://github.com/redvanisation/insta-social/fork
+1. Fork it `https://github.com/redvanisation/insta-social/fork`
 2. Create your feature branch (git checkout -b feature/[choose-a-name])
 3. Commit your changes (git commit -am 'What this commit will fix/add')
 4. Push to the branch (git push origin feature/[chosen name])
