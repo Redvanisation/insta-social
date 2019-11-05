@@ -1,5 +1,8 @@
 # Insta Social App
 
+## Live Link
+
+url(https://radiant-depths-62730.herokuapp.com/)
 
 ## Technologies
 
@@ -38,8 +41,8 @@ The user can:
 
 ## Developed by
 
-Mouhamadou Diouf ( <a href="https://github.com/MouhaDiouf"> @mouhad </a>)
 Radouane Khiri (<a href="https://github.com/Redvanisation"> @Redvanisation </a>)
+Mouhamadou Diouf ( <a href="https://github.com/MouhaDiouf"> @mouhad </a>)
 
 ## Contributing
 
