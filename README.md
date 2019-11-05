@@ -2,7 +2,7 @@
 
 ## Live Link
 
-[Insta Social on Heroku](https://radiant-depths-62730.herokuapp.com/)
+[Insta Social on Heroku](https://theinsta-social.herokuapp.com/)
 
 ## Technologies
 
