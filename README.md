@@ -32,7 +32,7 @@ $ rails s
 
 ## Functionalities
 
-Can be found on: ( <a href="https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project"> The odin final rails project </a>)
+Project's requirements: url(https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project"> The odin final rails project)
 
 
 The user can:
@@ -41,8 +41,7 @@ The user can:
 
 ## Developed by
 
-Radouane Khiri (<a href="https://github.com/Redvanisation"> @Redvanisation </a>)
-Mouhamadou Diouf ( <a href="https://github.com/MouhaDiouf"> @mouhad </a>)
+[Radouane Khiri] url(https://github.com/Redvanisation") and [Mouhamadou Diouf] url(https://github.com/MouhaDiouf")
 
 ## Contributing
 
