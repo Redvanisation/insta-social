@@ -1,23 +1,23 @@
-<div class="row section">
+<div class="row section ">
 
     <div class="col-md-8">
-    <h2>Your feed</h2>
+    <h2 class="text-center">Your feed</h2>
     <% @posts.each do |post| %>
         <% if current_user.friends.include?(post.user) %>
-            <p class="article-content"><%= post.content %></p>
+            <p class="article-showcase"><%= post.content %></p>
             <p><%= link_to "Read more", post_path(post) %></p>
-            <p>Author: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
-            <hr>
+            <p class="authors">by: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
         <% end %>
     <% end %>
     </div>
+    <div class="col-md-1"></div>
 
     <% if current_user.posts.any? %>
-        <div class="col-md-4">
-            <h3><%= current_user.username.capitalize %>'s posts</h3>
+        <div class="col-md-3 mobile-mt">
+            <h4><%= current_user.username.capitalize %>'s posts</h4>
             <% @posts.each do |post| %>
                 <% if post.user == current_user %>
-                    <p class="article-showcase"><%= post.content %></p>
+                    <p class="article-showcase text-smaller"><%= post.content %></p>
                     <p><%= link_to "Read more", post_path(post) %></p>
                     <hr>
                 <% end %>
@@ -26,13 +26,4 @@
     <% end %>
 
 
-
 </div>
-
-<script type='text/javascript'>
-    const articleShowcase = document.querySelector('.article-showcase');
-
-articleShowcase.addEventListener('click', () => {
-  alert('khra')
-})
-</script>
