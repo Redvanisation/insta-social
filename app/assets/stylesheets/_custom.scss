@@ -1,3 +1,9 @@
+*,
+html,
+body {
+    box-sizing: border-box !important;
+}
+
 .fa-user-friends {
     position: absolute;
     top: 10px;
@@ -12,6 +18,11 @@
 .gravatar {
     border-radius: 100%;
     margin: 0 10px;
+}
+
+.form-group {
+    width: 60%;
+    margin: 1rem auto;
 }
 
 .mt {

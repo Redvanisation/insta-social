@@ -1,4 +1,12 @@
 <main class="text-uppercase static">
   <h1 class="h1  static__title">Insta Social</h1>
-  <div class="static__description">Not just any social network</div>
+  <h2 class="static__description">More than just a social network</h2>
+  <div class="static__btn-div">
+    <%= link_to 'Sign up!', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+  </div>
+
+  <div class="static__svg-div">
+    <%= image_tag 'guy.svg', class: "static__svg-div--img-1" %>
+    <%= image_tag 'girl.svg', class: "static__svg-div--img-2" %>
+  </div>
 </main>
