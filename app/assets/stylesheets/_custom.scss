@@ -87,10 +87,6 @@ body {
     display: inline;
 }
 
-// .post-container {
-//     margin: 2rem 0;
-// }
-
 .inline-block {
     display: inline-block;
 }
@@ -101,4 +97,10 @@ body {
 
 .mobile-mt {
     margin-top: 3rem;
+}
+
+.content-div-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
 }
