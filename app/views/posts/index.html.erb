@@ -7,28 +7,26 @@
         <% end %>
         <% @posts.each do |post| %>            
             <% if current_user.friends.include?(post.user) %>
-                <p class="article-showcase"><%= post.content %></p>
-                <p><%= link_to "Read more", post_path(post) %></p>
-                <p class="authors">by: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
+                <div class="article">
+                    <p class="article-showcase"><%= post.content %></p>
+                    <p><%= link_to "Read more", post_path(post) %></p>
+                    <p class="authors">by: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
+                </div>
             <% end %>
 
     <% end %>
         
     </div>
-    <%
-=begin%>
- <div class="col-md-1"></div> 
-<%
-=end%>
 
     <% if current_user.posts.any? %>
         <aside class="col-md-3 mobile-mt content-div-border ml-md-4">
-            <h4><%= current_user.username.capitalize %>'s posts</h4>
+            <h4 class="title"><%= current_user.username.capitalize %>'s posts</h4>
             <% @posts.each do |post| %>
                 <% if post.user == current_user %>
-                    <p class="article-showcase text-smaller"><%= post.content %></p>
-                    <p><%= link_to "Read more", post_path(post) %></p>
-                    <hr>
+                    <div class="article">
+                        <p class="article-showcase text-smaller"><%= post.content %></p>
+                        <p><%= link_to "Read more", post_path(post) %></p>
+                    </div>
                 <% end %>
             <% end %>
         </aside>

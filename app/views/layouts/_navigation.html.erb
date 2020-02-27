@@ -6,7 +6,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
       <%if signed_in? %>
-        <%= link_to "Your profile", user_path(current_user), class: "nav-item nav-link" %><i class="fas fa-user-friends"><%= current_user.notifications_count %></i>
+        <%= link_to "Your profile", user_path(current_user), class: "nav-item nav-link profile mr-md-2" %>
+        <i class="fas fa-user-friends"><%= current_user.notifications_count %></i>
         <%= link_to "All users", users_path, class: "nav-item nav-link" %>
         <%= link_to "Create a post", new_post_path, class: "nav-item nav-link" %>
         <%= link_to "All posts", posts_path, class: "nav-item nav-link" %>

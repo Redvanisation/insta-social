@@ -1,8 +1,10 @@
-<h2 class="mb2">Users list</h2>
+<div class="section">
+  
+  <h2 class="mb2 title">Users list</h2>
 
-<% @users.each do |user| %>
-    <div class="row">
-      <div class="col-md-2 mt"><%= gravatar_for(user, options = { size: 60 }) %></div>
+  <% @users.each do |user| %>
+    <div class="row user-listed py-4 my-3 content-div-border">
+      <div class="col-md-2 mt mb-sm-4 mb-xs-4"><%= gravatar_for(user, options = { size: 60 }) %></div>
       <div class="col-md-3">
         <h4><%= link_to "#{user.username.capitalize}", user_path(user) %></h4>
         <p><%= user.email %></p>
@@ -13,12 +15,11 @@
           <%= form_for(:friendships, url: friendships_path, html: { method: :post }) do |f| %>
             <%= f.hidden_field( :user_id, value: current_user.id) %>
             <%= f.hidden_field( :friend_id, value: user.id) %>
-            <%= f.submit "Add as a friend", class: "btn btn-primary" %>
+            <%= f.submit "Add as a friend", class: "btn btn-primary btn-friend" %>
           <%end %>
         </div>
       <% end %>
-
     </div>
-    <hr>
-    <% end %>
+  <% end %>
 
+</div>

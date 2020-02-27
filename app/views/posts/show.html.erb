@@ -1,5 +1,5 @@
 <div class="section">
-  <h2 class="mb2">Post Details</h2>
+  <h2 class="mb2 title">Post Details</h2>
   <p class="article-content"><%= @post.content %></p>
   <h6 class="authors">By: <%= link_to "#{@post.user.username.capitalize}", user_path(@post.user) %></h6>
   <hr>
