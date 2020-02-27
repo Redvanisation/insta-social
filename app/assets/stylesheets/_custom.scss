@@ -25,6 +25,10 @@ body {
     margin: 1rem auto;
 }
 
+.section {
+    margin: 3rem auto;
+}
+
 .mt {
     margin-top: 5px;
 }
@@ -48,6 +52,11 @@ body {
     margin-top: 3rem;
 }
 
+.article-showcase {
+    font-size: 16px;
+    margin-top: 2rem;
+}
+
 .form {
     margin-top: 2rem;
 }
@@ -66,9 +75,9 @@ body {
     display: inline;
 }
 
-.post-container {
-    margin: 2rem 0;
-}
+// .post-container {
+//     margin: 2rem 0;
+// }
 
 .inline-block {
     display: inline-block;

@@ -1,26 +1,38 @@
-<div class="row">
+<div class="row section">
 
-    <div class="col-md-6">
-        <h2><%= current_user.username.capitalize %>'s posts</h2>
-        <% @posts.each do |post| %>
-            <% if post.user == current_user %>
-                <p class="article-content"><%= post.content %></p>
-                <p><%= link_to "Read more", post_path(post) %></p>
-                <hr>
-            <% end %>
+    <div class="col-md-8">
+    <h2>Your feed</h2>
+    <% @posts.each do |post| %>
+        <% if current_user.friends.include?(post.user) %>
+            <p class="article-content"><%= post.content %></p>
+            <p><%= link_to "Read more", post_path(post) %></p>
+            <p>Author: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
+            <hr>
         <% end %>
+    <% end %>
     </div>
 
-    <div class="col-md-6">
-        <h2>Friends posts</h2>
-        <% @posts.each do |post| %>
-            <% if current_user.friends.include?(post.user) %>
-                <p class="article-content"><%= post.content %></p>
-                <p><%= link_to "Read more", post_path(post) %></p>
-                <p>Author: <%= link_to "#{post.user.username.capitalize}", user_path(post.user) %></p>
-                <hr>
+    <% if current_user.posts.any? %>
+        <div class="col-md-4">
+            <h3><%= current_user.username.capitalize %>'s posts</h3>
+            <% @posts.each do |post| %>
+                <% if post.user == current_user %>
+                    <p class="article-showcase"><%= post.content %></p>
+                    <p><%= link_to "Read more", post_path(post) %></p>
+                    <hr>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
+
+
 
 </div>
+
+<script type='text/javascript'>
+    const articleShowcase = document.querySelector('.article-showcase');
+
+articleShowcase.addEventListener('click', () => {
+  alert('khra')
+})
+</script>
