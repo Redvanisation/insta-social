@@ -9,8 +9,10 @@
   <% if @post.comments.any? %>
     <h5>Comments:</h5>
       <% @post.comments.each do |comment| %>
-          <p><%= comment.body %></p>
+        <div class="comment-div">
+          <p class="comment-body"><%= comment.body %></p>
           <p class="authors">By: <%= link_to "#{comment.user.username.capitalize}", user_path(comment.user) %></p>
+        </div>
       <% end %>
   <% end %>
 
