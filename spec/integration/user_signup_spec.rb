@@ -5,7 +5,7 @@ require 'rails_helper'
 feature 'User signup' do
   let(:user) { build(:user) }
 
-  scenario 'user sign up with valid data' do
+  scenario 'user can sign up with valid data' do
     visit new_user_registration_path
     fill_in 'Username', with: user.username
     fill_in 'Email', with: user.email

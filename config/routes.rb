@@ -10,14 +10,14 @@ Rails.application.routes.draw do
 
   authenticated :user do
 
-    root 'users#index'
+    root 'posts#index'
   
   end
 
 
   devise_scope :user do
 
-    root to: 'devise/sessions#new'
+    root to: 'static_pages#index'
 
     delete 'sign_out', :to => 'devise/sessions#destroy'
   
