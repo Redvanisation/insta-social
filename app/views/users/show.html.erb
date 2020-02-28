@@ -1,10 +1,10 @@
 <div class="section">
-    <h2 class="mb2"> <%= gravatar_for(@user) %><%=  @user.username.capitalize %>'s profile </h2>
+    <h3 class="mb2 profile-header"><%= gravatar_for(@user) %><span class="profile-name"><%=  @user.username.capitalize %></span> </h3>
 
     <div class="row">
     <% if current_user == @user %>
         <% if current_user.posts.any? %>
-            <section class="col-md-7 mr-md-5 mobile-mt content-div-border">
+            <section class="col-md-6 mr-md-5 mobile-mt content-div-border">
                 <h4 class="title"><%= current_user.username.capitalize %>'s posts</h4>
                 <% @user.posts.each do |post| %>
                     <% if post.user == current_user %>
@@ -17,18 +17,18 @@
             </section>
         <% end %> 
 
-        <aside class="friends-aside col-md-4 mobile-mt">
+        <aside class="friends-aside col-md-5 mobile-mt">
             <div class=" mb-3 content-div-border">
                 <h5> Pending requests </h5>
                     
                 <% @user.received_requests.each do |received_request| %>
-                    <div class="row">
-                        <span class="col-md-6 text-center">
-                            <%= gravatar_for(received_request, options = { size: 40 }) %>
+                    <div class="request article">
+                        <span>
+                            <span class="grav"><%= gravatar_for(received_request, options = { size: 40 }) %></span>
                             <%= link_to "#{received_request.username.capitalize}", user_path(received_request.id) %>
                         </span>
                         
-                        <span class="col-md-2 text-center mt">
+                        <span class="text-center">
                             <%= form_for(:friendships, url: friendship_path(current_user.id, received_request.id), html: { method: :put }) do |f| %>
                                 <%= f.hidden_field( :user_id, value: received_request.id) %>
                                 <%= f.hidden_field( :friend_id, value: current_user.id) %>

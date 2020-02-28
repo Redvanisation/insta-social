@@ -30,6 +30,16 @@ h4 {
     border-radius: 5px;
 }
 
+.profile-header {
+    display: flex;
+}
+
+.profile-name {
+    position: relative;
+    top: 15px;
+    left: 0;
+}
+
 .gravatar {
     border-radius: 100%;
     margin: 0 10px;
@@ -60,6 +70,14 @@ h4 {
 
 .mr2 {
     margin-right: 10px;
+}
+
+.request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
 }
 
 .article-content {
@@ -141,6 +159,14 @@ h4 {
     flex-direction: column;
 }
 
+.success,
+.alert {
+  background-color: #6fb3fc;
+  color: #fff;
+  padding: .5rem;
+  text-align: center;
+}
+
 @media only screen and (max-width: 768px) {
     .form-group {
         width: 90%;
@@ -166,5 +192,10 @@ h4 {
     }
     .user-listed {
         margin: 0 auto;
+    }
+    .grav {
+        display: inline-block;
+        position: relative;
+        top: 10px;
     }
 }
