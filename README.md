@@ -1,4 +1,22 @@
-# Insta Social App
+<br />
+<p align="center">
+  <a href="https://github.com/Redvanisation/insta-social">
+    <img src="app/assets/images/instasoc.png" alt="Logo" width="860" height="460">
+  </a>
+
+  <h2 align="center">Insta Social</h2>
+
+  <p align="center">
+    A full CRUD social network app made using the TDD technique using RSpec and Capybara, Ruby on Rails, Sass, Bootstrap, PostgreSQL and Omniauth.
+    <br />
+    <br />
+    <a href="https://theinstasocial.herokuapp.com/" target="_blank">Live Link</a>
+    ·
+    <a href="https://github.com/Redvanisation/insta-social/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Redvanisation/insta-social/issues">Request Feature</a>
+  </p>
+</p>
 
 ## Live Link
 
