@@ -1,9 +1,10 @@
-<h1 class="mb2">Publish a new post</h1>
+<div class="section form-group">
+    <h2 class="mb2">Write a post</h2>
 
-<%= form_for(:post, url: posts_path(@post), html: { method: :post }) do |f| %>
+    <%= form_for(:post, url: posts_path(@post), html: { method: :post }) do |f| %>
 
-    <%= f.label :content %>
-    <%= f.text_area :content, class: 'form-control' %>
-    
-    <%= f.submit "Publish", class: "btn btn-primary mt2" %>
-<% end %>
+        <%= f.text_area :content, class: 'form-control mb-2 text-area', cols: 5, rows: 5, placeholder: 'Write your new post here...' %>
+        
+        <%= f.submit "Publish", class: "btn btn-primary mt2" %>
+    <% end %>
+</div>
