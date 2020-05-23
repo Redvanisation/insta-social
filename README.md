@@ -1,5 +1,6 @@
 <br />
 <p align="center">
+
   <a href="https://github.com/Redvanisation/insta-social">
     <img src="app/assets/images/instasoc.png" alt="Logo" width="860" height="460">
   </a>
